@@ -1,0 +1,26 @@
+.submitRegionButton {
+	width: 12vmin;
+	padding: 1vmin;
+	font-size: 2vmin;
+	font-family: Dongle, sans-serif;
+	background-color: white;
+}
+
+.submitRegionButton__enabled {
+	color: navy;
+	border: 2px solid navy;
+}
+
+.submitRegionButton__disabled {
+	color: #aaaaaa;
+	border: 2px solid #aaaaaa;
+}
+
+.submitRegionButton__enabled:hover {
+	background-color: rgb(170, 209, 224);
+}
+
+.submitRegionButton__enabled:active {
+	background-color: navy;
+	color: whitesmoke;
+}

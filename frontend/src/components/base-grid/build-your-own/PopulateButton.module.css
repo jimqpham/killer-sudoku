@@ -1,0 +1,18 @@
+.populateInputButton {
+	width: 12vmin;
+	padding: 0.5vmin;
+	background-color: white;
+	font-size: 2vmin;
+	font-family: Dongle, sans-serif;
+	color: navy;
+	border: 2px solid navy;
+}
+
+.populateInputButton:hover {
+	background-color: rgb(170, 209, 224);
+}
+
+.populateInputButton:active {
+	background-color: navy;
+	color: whitesmoke;
+}

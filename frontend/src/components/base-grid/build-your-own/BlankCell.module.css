@@ -1,0 +1,41 @@
+.cellGrid__phaseOne {
+	background-color: whitesmoke;
+}
+
+.cellGrid__phaseOne:hover {
+	background-color: aliceblue;
+	cursor: pointer;
+}
+
+.cellGrid__phaseOne:focus {
+	background-color: skyblue;
+}
+
+.cellGrid__unselected__phaseTwo {
+	background-color: whitesmoke;
+}
+
+.cellGrid__selected__phaseTwo {
+	background-color: burlywood;
+}
+
+@keyframes blinking {
+	0% {
+		color: darkred;
+	}
+	50% {
+		opacity: navy;
+	}
+	100% {
+		opacity: darkred;
+	}
+}
+
+.cellGrid__unselected__phaseTwo:hover {
+	background-color: aliceblue;
+	cursor: pointer;
+}
+
+.cellGrid__selected__phaseTwo:hover {
+	cursor: pointer;
+}
