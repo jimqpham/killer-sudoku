@@ -1,0 +1,26 @@
+.heartbar {
+	grid-area: hearts;
+	justify-self: right;
+}
+
+.heartImg {
+	margin: 2px;
+}
+
+.heartDropped {
+	margin: 2px;
+	animation: heartDropped 0.4s ease-out forwards;
+}
+
+@keyframes heartDropped {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.8;
+		transform: scale(130%);
+	}
+	100% {
+		opacity: 0;
+	}
+}

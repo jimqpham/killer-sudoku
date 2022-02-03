@@ -1,0 +1,35 @@
+.cellGrid__blank {
+	background-color: whitesmoke;
+}
+
+.cellGrid__correct-input {
+	background-color: bisque;
+}
+
+.cellGrid__incorrect-input {
+	color: darkred;
+	animation: blinking 0.4s ease-in forwards;
+}
+
+@keyframes blinking {
+	0% {
+		color: darkred;
+	}
+	50% {
+		opacity: navy;
+	}
+	100% {
+		opacity: darkred;
+	}
+}
+
+.cellGrid__blank:hover,
+.cellGrid__incorrect-input:hover {
+	background-color: aliceblue;
+	cursor: pointer;
+}
+
+.cellGrid__blank:focus,
+.cellGrid__incorrect-input:focus {
+	background-color: skyblue;
+}

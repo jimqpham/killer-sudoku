@@ -1,0 +1,36 @@
+.mainGrid {
+	grid-area: main-grid;
+	margin: auto;
+	display: grid;
+	width: min-content;
+	border: var(--major-grid-line);
+}
+
+.gridRow {
+	display: flex;
+	flex-direction: row;
+}
+
+.gridRow:nth-child(3n) {
+	border-bottom: var(--major-grid-line);
+}
+
+.gridCell {
+	height: var(--cell-size);
+	width: var(--cell-size);
+	border: var(--minor-grid-line);
+	font-size: 5vmin;
+	font-weight: 700;
+	color: navy;
+	text-align: center;
+	border-collapse: collapse;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.gridCell:nth-child(9n + 3),
+.gridCell:nth-child(9n + 6) {
+	border-right: var(--major-grid-line);
+}

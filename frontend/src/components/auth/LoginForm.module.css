@@ -1,0 +1,29 @@
+.loginForm {
+	position: absolute;
+	top: 30vmin;
+	left: 30vmin;
+	width: 30vmin;
+	padding: 5vmin;
+	background-color: cadetblue;
+	display: flex;
+	flex-direction: column;
+	gap: 1vmin;
+}
+
+.label {
+	font-size: 2vmin;
+	font-weight: 500;
+}
+
+.input {
+	font-size: 2vmin;
+}
+
+.button {
+	font-size: 2vmin;
+	font-weight: 600;
+	width: min-content;
+	margin-top: 2vmin;
+	padding: 0.5vmin;
+	align-self: center;
+}

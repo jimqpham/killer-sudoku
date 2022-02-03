@@ -1,0 +1,10 @@
+.content {
+	display: grid;
+	grid-template-columns: 30% 40% 30%;
+	grid-template-rows: 7vmin 3vmin 8vmin 80vmin;
+	grid-template-areas:
+		"header header  header"
+		".    .    hearts"
+		".    .    draft-toggle"
+		"main-grid    main-grid    main-grid";
+}

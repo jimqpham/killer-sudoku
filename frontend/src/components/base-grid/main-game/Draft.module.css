@@ -1,0 +1,8 @@
+.draft {
+	position: absolute;
+	bottom: 7%;
+	right: 10%;
+	color: grey;
+	font-size: 2vmin;
+	padding: 0.1vmin;
+}
