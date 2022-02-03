@@ -1,7 +1,6 @@
 import arrayIncludes from "./arrayIncludes";
 
 const checkDuplicates = (rowIndex, colIndex, inputs) => {
-	console.log("Hi!");
 	const duplicateCoords = [];
 	const duplicateCoordsInRow = detectDuplicatesInRow(rowIndex, inputs);
 	const duplicateCoordsInCol = detectDuplicatesInCol(colIndex, inputs);
