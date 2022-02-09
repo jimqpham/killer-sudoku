@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jimphuu/killer-sudoku/issues"
   },
-  "homepage": "https://github.com/jimphuu/killer-sudoku#readme"
+  "homepage": "https://github.com/jimphuu/killer-sudoku#readme",
+  "dependencies": {
+    "jest": "^27.5.1"
+  }
 }
