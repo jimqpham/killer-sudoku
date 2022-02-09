@@ -2,28 +2,46 @@ import styles from "./LoginForm.module.css";
 
 import { useNavigate } from "react-router";
 import { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import axios from "../../network/axios";
+import { authActions } from "../../context/auth-slice";
+import LoginErrorModal from "./LoginErrorModal";
 
 const LoginForm = (props) => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
 	const usernameRef = useRef();
 	const passwordRef = useRef();
+
+	const [showLoginError, setShowLoginError] = useState(false);
 
 	const handleLoginSubmit = async (event) => {
 		event.preventDefault();
 		props.setLoading(true);
 
-		const response = await axios.post("/users/login", {
-			email: usernameRef.current.value,
-			password: passwordRef.current.value,
-		});
+		try {
+			const response = await axios.post("/users/login", {
+				email: usernameRef.current.value,
+				password: passwordRef.current.value,
+			});
 
-		props.setLoading(false);
-		if (response.status === 200) navigate("/game");
+			props.setLoading(false);
+			if (response.status === 200) {
+				dispatch(authActions.updateToken({ token: response.data.token }));
+				navigate("/game");
+			}
+		} catch (e) {
+			props.setLoading(false);
+			setShowLoginError(true);
+		}
 	};
 
 	return (
 		<>
+			{showLoginError && (
+				<LoginErrorModal hideErrorModal={() => setShowLoginError(false)} />
+			)}
 			<form className={styles.loginForm} onSubmit={handleLoginSubmit}>
 				<img src="/logo.png" className={styles.logo} alt="Logo" />
 				<label className={styles.label} htmlFor="username">
