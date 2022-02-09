@@ -1,12 +1,13 @@
+import styles from "./DashedOverlay.module.css";
+
 import {
 	topBridge,
 	bottomBridge,
 	leftBridge,
 	rightBridge,
-} from "../svg/Bridges";
-import { topEdge, bottomEdge, leftEdge, rightEdge } from "../svg/Edges";
-import styles from "./DashedOverlay.module.css";
-import useCheckEdges from "../../helpers/useCheckEdges";
+} from "./svg-lines/Bridges";
+import { topEdge, bottomEdge, leftEdge, rightEdge } from "./svg-lines/Edges";
+import useCheckEdges from "../../../helpers/useCheckEdges";
 
 const DashedOverlay = (props) => {
 	const { row, col } = props;

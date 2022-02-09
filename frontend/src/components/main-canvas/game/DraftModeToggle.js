@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { gameplayActions } from "../../../context/gameplay-slice";
-import SideButton from "../../ui/SideButton";
+
 import styles from "./DraftModeToggle.module.css";
+
+import SideButton from "../../ui/SideButton";
+import { gameplayActions } from "../../../context/gameplay-slice";
 
 const DraftModeToggle = () => {
 	const inDraftMode = useSelector((state) => state.gameplay.inDraftMode);

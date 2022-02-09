@@ -1,7 +1,9 @@
 import { useDispatch } from "react-redux";
-import { gameplayActions } from "../../../context/gameplay-slice";
-import Modal from "../../ui/Modal";
+
 import styles from "./GameOverModal.module.css";
+
+import Modal from "../../ui/Modal";
+import { gameplayActions } from "../../../context/gameplay-slice";
 
 const GameOverModal = () => {
 	const dispatch = useDispatch();

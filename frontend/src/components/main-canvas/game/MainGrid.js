@@ -1,5 +1,5 @@
 import styles from "./MainGrid.module.css";
-import Cell from "./Cell";
+import Cell from "../cell/Cell";
 
 const MainGrid = (props) => {
 	return (

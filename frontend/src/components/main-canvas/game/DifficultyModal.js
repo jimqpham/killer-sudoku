@@ -1,8 +1,9 @@
 import { useDispatch } from "react-redux";
-import { gameplayActions } from "../../../context/gameplay-slice";
+
 import styles from "./DifficultyModal.module.css";
 
 import Modal from "../../ui/Modal";
+import { gameplayActions } from "../../../context/gameplay-slice";
 
 const DifficultyModal = (props) => {
 	const dispatch = useDispatch();

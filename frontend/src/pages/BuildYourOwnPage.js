@@ -1,11 +1,12 @@
-import Header from "../components/ui/Header";
-import BuildYourOwnGrid from "../components/base-grid/build-your-own/BuildYourOwnGrid";
-import styles from "./BuildYourOwnPage.module.css";
-import ProgressBar from "../components/base-grid/build-your-own/ProgressBar";
-
 import { useState } from "react";
+
+import styles from "./BuildYourOwnPage.module.css";
+
+import Header from "../components/ui/Header";
+import BuildYourOwnGrid from "../components/main-canvas/byo/BuildYourOwnGrid";
+import ProgressBar from "../components/main-canvas/byo/ProgressBar";
+import HelperButtons from "../components/main-canvas/byo/HelperButtons";
 import arrayIncludes from "../helpers/arrayIncludes";
-import HelperButtons from "../components/base-grid/build-your-own/HelperButtons";
 
 const BuildYourOwn = () => {
 	const [selectedCells, setSelectedCells] = useState([]);

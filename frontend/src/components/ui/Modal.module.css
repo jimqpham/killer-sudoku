@@ -29,6 +29,8 @@
 	display: flex;
 	justify-content: center;
 	padding: 1vmin 0;
+	border-top-left-radius: 2vmin;
+	border-top-right-radius: 2vmin;
 }
 
 .content {
@@ -41,4 +43,6 @@
 	background-color: whitesmoke;
 	padding: 1vmin;
 	row-gap: 1vmin;
+	border-bottom-left-radius: 2vmin;
+	border-bottom-right-radius: 2vmin;
 }

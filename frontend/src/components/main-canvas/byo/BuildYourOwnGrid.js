@@ -1,8 +1,10 @@
-import styles from "./BuildYourOwnGrid.module.css";
-import BlankCell from "./BlankCell";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { byoActions } from "../../../context/buildyourown-slice";
+
+import styles from "./BuildYourOwnGrid.module.css";
+
+import BlankCell from "../cell/BlankCell";
 import populatedRegions from "../../../helpers/populatedRegions";
 
 const BuildYourOwnGrid = (props) => {

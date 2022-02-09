@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 import initialGameplayState from "./initial-gameplay-state";
 import validateInputKey from "../helpers/validateInputKey";
 import getRandomCoords from "../helpers/getRandomCoords";
-import axios from "axios";
 
 const gameplaySlice = createSlice({
 	name: "gameplay",

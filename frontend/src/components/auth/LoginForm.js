@@ -40,7 +40,7 @@ const LoginForm = (props) => {
 				</label>
 				<input
 					className={styles.input}
-					type="text"
+					type="password"
 					id="password"
 					ref={passwordRef}
 				/>

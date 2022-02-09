@@ -1,13 +1,13 @@
-import styles from "./Cell.module.css";
-import DashedOverlay from "../../regions/DashedOverlay";
-
-import AreaSum from "../../regions/AreaSum";
-import { useDispatch } from "react-redux";
-import { gameplayActions } from "../../../context/gameplay-slice";
-import { useSelector } from "react-redux";
-import validateInputKey from "../../../helpers/validateInputKey";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+
+import styles from "./Cell.module.css";
+import DashedOverlay from "../cell/DashedOverlay";
+import AreaSum from "../cell/AreaSum";
 import Draft from "./Draft";
+
+import { gameplayActions } from "../../../context/gameplay-slice";
+import validateInputKey from "../../../helpers/validateInputKey";
 
 const Cell = (props) => {
 	const { row, col } = props;

@@ -1,17 +1,17 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { gameplayActions } from "../context/gameplay-slice";
-
-import DifficultyModal from "../components/base-grid/main-game/DifficultyModal";
-import GameOverModal from "../components/base-grid/main-game/GameOverModal";
-import Hearts from "../components/base-grid/main-game/Hearts";
-import MainGrid from "../components/base-grid/main-game/MainGrid";
-import DraftModeToggle from "../components/base-grid/main-game/DraftModeToggle";
-import Header from "../components/ui/Header";
-import RestartButton from "../components/base-grid/main-game/RestartButton";
+import axios from "../network/axios";
 
 import styles from "./GameInterfacePage.module.css";
-import axios from "axios";
+
+import DifficultyModal from "../components/main-canvas/game/DifficultyModal";
+import GameOverModal from "../components/main-canvas/game/GameOverModal";
+import Hearts from "../components/main-canvas/game/Hearts";
+import MainGrid from "../components/main-canvas/game/MainGrid";
+import DraftModeToggle from "../components/main-canvas/game/DraftModeToggle";
+import RestartButton from "../components/main-canvas/game/RestartButton";
+import Header from "../components/ui/Header";
+import { gameplayActions } from "../context/gameplay-slice";
 
 const GameInterfacePage = () => {
 	const hearts = useSelector((state) => state.gameplay.hearts);

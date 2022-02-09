@@ -1,6 +1,8 @@
-import ProgressNode from "./ProgressNode";
-import styles from "./ProgressBar.module.css";
 import { useSelector } from "react-redux";
+
+import styles from "./ProgressBar.module.css";
+
+import ProgressNode from "./ProgressNode";
 
 const ProgressBar = () => {
 	const phase = useSelector((state) => state.byo.phase);

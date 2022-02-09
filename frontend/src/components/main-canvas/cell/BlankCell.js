@@ -1,11 +1,12 @@
-import DashedOverlay from "../../regions/DashedOverlay";
-import AreaSum from "../../regions/AreaSum";
-import populatedInputs from "../../../helpers/populateInput";
-
-import styles from "./BlankCell.module.css";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { byoActions } from "../../../context/buildyourown-slice";
+
+import styles from "./BlankCell.module.css";
+
+import DashedOverlay from "../cell/DashedOverlay";
+import AreaSum from "../cell/AreaSum";
+import populatedInputs from "../../../helpers/populateInput";
 import arrayIncludes from "../../../helpers/arrayIncludes";
 
 const BlankCell = (props) => {
