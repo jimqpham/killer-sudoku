@@ -6,6 +6,7 @@
 	height: 100%;
 	background-color: grey;
 	opacity: 80%;
+	z-index: 1;
 }
 
 .modal {
@@ -15,6 +16,7 @@
 	width: 30vmin;
 	display: flex;
 	flex-direction: column;
+	z-index: 2;
 }
 
 .title {
