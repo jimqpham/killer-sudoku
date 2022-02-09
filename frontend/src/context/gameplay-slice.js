@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import initialGameplayState from "./initial-gameplay-state";
 import validateInputKey from "../helpers/validateInputKey";
 import getRandomCoords from "../helpers/getRandomCoords";
+import axios from "axios";
 
 const gameplaySlice = createSlice({
 	name: "gameplay",
@@ -15,9 +16,8 @@ const gameplaySlice = createSlice({
 					if (state.hearts > 0) state.hearts--;
 			}
 		},
-		toggleDraftMode(state, action) {
-			if (action.payload.inDraftMode !== undefined)
-				state.inDraftMode = action.payload.inDraftMode;
+		toggleDraftMode(state) {
+			state.inDraftMode = !state.inDraftMode;
 		},
 		reset(state) {
 			state.hearts = 3;
@@ -34,6 +34,10 @@ const gameplaySlice = createSlice({
 			randomCoords.forEach(([row, col]) => {
 				state.input[row][col] = state.solution[row][col];
 			});
+		},
+		newGame(state) {
+			state.input = Array(9).fill(Array(9).fill(" "));
+			state.hearts = 3;
 		},
 	},
 });

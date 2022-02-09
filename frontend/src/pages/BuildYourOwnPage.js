@@ -1,6 +1,6 @@
 import Header from "../components/ui/Header";
 import BuildYourOwnGrid from "../components/base-grid/build-your-own/BuildYourOwnGrid";
-import styles from "./BuildYourOwn.module.css";
+import styles from "./BuildYourOwnPage.module.css";
 import ProgressBar from "../components/base-grid/build-your-own/ProgressBar";
 
 import { useState } from "react";

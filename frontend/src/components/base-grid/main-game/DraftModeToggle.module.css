@@ -1,15 +1,7 @@
-.toggle {
-	grid-area: draft-toggle;
-	position: relative;
+.draftModeToggle {
+	position: absolute;
 	right: -1vmin;
-	border-bottom-left-radius: 1vmin;
-	border-top-left-radius: 1vmin;
-	border: 1px solid navy;
-	justify-self: right;
-	font-family: Dongle, sans-serif;
-	font-size: 2vmin;
-	padding: 1vmin;
-	background-color: lightblue;
+	top: 10vmin;
 }
 
 .draftIcon {

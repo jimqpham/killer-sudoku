@@ -1,14 +1,15 @@
 .heartbar {
 	grid-area: hearts;
-	justify-self: right;
+	justify-self: center;
 }
 
 .heartImg {
-	margin: 2px;
+	margin: 1vmin;
+	width: 5vmin;
 }
 
 .heartDropped {
-	margin: 2px;
+	margin: 1vmin;
 	animation: heartDropped 0.4s ease-out forwards;
 }
 

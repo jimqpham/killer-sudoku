@@ -1,6 +1,6 @@
 import { byoActions } from "../../../context/buildyourown-slice";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./NextPhaseButton.module.css";
+import SideButton from "../../ui/SideButton";
 
 const NextPhaseButton = () => {
 	const dispatch = useDispatch();
@@ -19,19 +19,14 @@ const NextPhaseButton = () => {
 		console.log("submit board!");
 	};
 
+	const buttonTitle = phase === 2 ? "Submit >>" : "Next >>";
+
 	return (
-		<button
-			className={`${styles.nextPhaseButton} ${
-				completePhase
-					? styles.nextPhaseButton__enabled
-					: styles.nextPhaseButton__disabled
-			}`}
+		<SideButton
+			enabled={completePhase}
 			onClick={phase < 2 ? handleNextPhase : handleSubmit}
-			disabled={!completePhase ? true : false}
-		>
-			{phase === 1 && <>Next &gt;&gt;</>}
-			{phase === 2 && <>Submit &gt;&gt;</>}
-		</button>
+			title={buttonTitle}
+		/>
 	);
 };
 

@@ -20,9 +20,9 @@ const Hearts = () => {
 				}`}
 				src="heart.png"
 				alt="heart-img"
-				width="20px"
 			></img>
 		));
+
 	useEffect(() => {
 		if (hearts === 3) setHeartDroppedFlags([false, false, false]);
 

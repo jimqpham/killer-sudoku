@@ -1,37 +1,35 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { gameplayActions } from "../../../context/gameplay-slice";
+import SideButton from "../../ui/SideButton";
 import styles from "./DraftModeToggle.module.css";
 
 const DraftModeToggle = () => {
 	const inDraftMode = useSelector((state) => state.gameplay.inDraftMode);
 	const dispatch = useDispatch();
 
-	useEffect(() => {
-		dispatch(gameplayActions.toggleDraftMode(inDraftMode));
-	}, [inDraftMode, dispatch]);
-
-	const turnOffDraftMode = () => {
-		dispatch(gameplayActions.toggleDraftMode({ inDraftMode: false }));
-	};
-	const turnOnDraftMode = () => {
-		dispatch(gameplayActions.toggleDraftMode({ inDraftMode: true }));
+	const toggleDraftMode = () => {
+		dispatch(gameplayActions.toggleDraftMode());
 	};
 
-	const toggleAtOn = (
-		<div className={styles.toggle} onClick={turnOffDraftMode}>
-			<img className={styles.draftIcon} src="draft-on.png" alt="draft-icon" />
-			Draft Mode: On
-		</div>
-	);
-	const toggleAtOff = (
-		<div className={styles.toggle} onClick={turnOnDraftMode}>
-			<img className={styles.draftIcon} src="draft-off.png" alt="draft-icon" />
-			Draft Mode: Off
-		</div>
+	const buttonTitle = (
+		<>
+			<img
+				className={styles.draftIcon}
+				src={inDraftMode ? "draft-on.png" : "draft-off.png"}
+				alt="draft-icon"
+			/>
+			Draft Mode: {inDraftMode ? "On" : "Off"}
+		</>
 	);
 
-	return inDraftMode ? toggleAtOn : toggleAtOff;
+	return (
+		<SideButton
+			className={styles.draftModeToggle}
+			onClick={toggleDraftMode}
+			enabled={true}
+			title={buttonTitle}
+		/>
+	);
 };
 
 export default DraftModeToggle;

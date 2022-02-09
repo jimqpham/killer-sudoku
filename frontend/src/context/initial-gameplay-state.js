@@ -6,7 +6,7 @@ const initialGameplayState = {
 				[0, 0],
 				[1, 0],
 			],
-			sum: 15,
+			sum: 0,
 		},
 		{
 			cells: [

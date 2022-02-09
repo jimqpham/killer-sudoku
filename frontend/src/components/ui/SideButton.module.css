@@ -1,0 +1,28 @@
+.sideButton {
+	width: 12vmin;
+	padding: 0.5vmin;
+	background-color: white;
+	font-size: 2vmin;
+	font-family: Dongle, sans-serif;
+	border-top-left-radius: 1vmin;
+	border-bottom-left-radius: 1vmin;
+}
+
+.sideButton__enabled {
+	color: navy;
+	border: 2px solid navy;
+}
+
+.sideButton__enabled:hover {
+	background-color: rgb(170, 209, 224);
+}
+
+.sideButton__enabled:active {
+	background-color: navy;
+	color: whitesmoke;
+}
+
+.sideButton__disabled {
+	color: #aaaaaa;
+	border: 2px solid #aaaaaa;
+}

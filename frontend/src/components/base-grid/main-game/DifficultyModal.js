@@ -1,40 +1,41 @@
 import { useDispatch } from "react-redux";
-import { useState } from "react";
 import { gameplayActions } from "../../../context/gameplay-slice";
 import styles from "./DifficultyModal.module.css";
 
-const DifficultyModal = () => {
+import Modal from "../../ui/Modal";
+
+const DifficultyModal = (props) => {
 	const dispatch = useDispatch();
-	const [showDifficultyModal, setShowDifficultyModal] = useState(true);
 
 	const handleChoosingDifficulty = (difficulty) => {
 		dispatch(gameplayActions.fillCells({ difficulty }));
-		setShowDifficultyModal(false);
+		props.hideDifficultyModal();
 	};
 
-	return (
-		showDifficultyModal && (
-			<>
-				<div className={styles.backdrop} />
-				<div className={styles.errorModal}>
-					<div className={styles.title}>Difficulty</div>
-					<div className={styles.content}>
-						<ul>
-							<li onClick={handleChoosingDifficulty.bind(null, "Easy")}>
-								Easy
-							</li>
-							<li onClick={handleChoosingDifficulty.bind(null, "Medium")}>
-								Medium
-							</li>
-							<li onClick={handleChoosingDifficulty.bind(null, "Hard")}>
-								Hard
-							</li>
-						</ul>
-					</div>
-				</div>
-			</>
-		)
+	const modalContent = (
+		<ul className={styles.listWrap}>
+			<li
+				className={styles.listItem}
+				onClick={handleChoosingDifficulty.bind(null, "Easy")}
+			>
+				Easy
+			</li>
+			<li
+				className={styles.listItem}
+				onClick={handleChoosingDifficulty.bind(null, "Medium")}
+			>
+				Medium
+			</li>
+			<li
+				className={styles.listItem}
+				onClick={handleChoosingDifficulty.bind(null, "Hard")}
+			>
+				Hard
+			</li>
+		</ul>
 	);
+
+	return <Modal title="Difficulty Level" content={modalContent} />;
 };
 
 export default DifficultyModal;

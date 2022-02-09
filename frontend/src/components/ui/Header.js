@@ -7,7 +7,7 @@ const Header = () => {
 			<img className={styles.logo} src="logo.png" alt="Killer Sudoku" />
 			<nav className={styles.nav}>
 				<Link className={styles.navLink} to="/game">
-					New Game
+					Play Game
 				</Link>
 				<Link className={styles.navLink} to="/buildyourown">
 					Build Your Own

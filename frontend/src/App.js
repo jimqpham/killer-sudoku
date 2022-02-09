@@ -1,16 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import GameInterface from "./pages/GameInterface";
+import GameInterfacePage from "./pages/GameInterfacePage";
 import LoginPage from "./pages/LoginPage";
-import BuildYourOwn from "./pages/BuildYourOwn";
+import BuildYourOwnPage from "./pages/BuildYourOwnPage";
 
 function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<LoginPage />} />
-				<Route path="game" element={<GameInterface />} />
+				<Route path="game" element={<GameInterfacePage />} />
 				<Route path="login" element={<LoginPage />} />
-				<Route path="buildyourown" element={<BuildYourOwn />} />
+				<Route path="buildyourown" element={<BuildYourOwnPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
