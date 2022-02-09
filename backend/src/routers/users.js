@@ -18,6 +18,7 @@ router.post("/users", async (req, res) => {
 // Login current user
 router.post("/users/login", async (req, res) => {
 	try {
+		console.log("Trying to log in user...");
 		const user = await User.findByCredentials(
 			req.body.email,
 			req.body.password
