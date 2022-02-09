@@ -10,14 +10,26 @@
 	gap: 1vmin;
 	font-family: Dongle, sans-serif;
 	color: white;
+	border-radius: 2vmin;
+}
+
+.logo {
+	opacity: 100%;
+	width: 50%;
+	margin: auto;
+	border-radius: 2px;
 }
 
 .label {
 	font-size: 3vmin;
+	font-family: Dongle, sans-serif;
 }
 
 .input {
 	font-size: 3vmin;
+	font-family: Dongle, sans-serif;
+	border-radius: 1vmin;
+	padding: 2px 1rem;
 }
 
 .button {

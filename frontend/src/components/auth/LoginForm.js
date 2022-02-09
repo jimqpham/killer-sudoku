@@ -1,7 +1,8 @@
 import styles from "./LoginForm.module.css";
-import axios from "axios";
+
 import { useNavigate } from "react-router";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import axios from "../../network/axios";
 
 const LoginForm = (props) => {
 	const navigate = useNavigate();
@@ -10,38 +11,42 @@ const LoginForm = (props) => {
 
 	const handleLoginSubmit = async (event) => {
 		event.preventDefault();
+		props.setLoading(true);
 
-		axios.defaults.baseURL = process.env.REACT_APP_BACKEND_URL;
 		const response = await axios.post("/users/login", {
 			email: usernameRef.current.value,
 			password: passwordRef.current.value,
 		});
 
-		if (response) navigate("/game");
+		props.setLoading(false);
+		if (response.status === 200) navigate("/game");
 	};
 
 	return (
-		<form className={styles.loginForm} onSubmit={handleLoginSubmit}>
-			<label className={styles.label} htmlFor="username">
-				Username
-			</label>
-			<input
-				className={styles.input}
-				type="text"
-				id="username"
-				ref={usernameRef}
-			/>
-			<label className={styles.label} htmlFor="password">
-				Password
-			</label>
-			<input
-				className={styles.input}
-				type="text"
-				id="password"
-				ref={passwordRef}
-			/>
-			<button className={styles.button}>Play!</button>
-		</form>
+		<>
+			<form className={styles.loginForm} onSubmit={handleLoginSubmit}>
+				<img src="/logo.png" className={styles.logo} alt="Logo" />
+				<label className={styles.label} htmlFor="username">
+					Username
+				</label>
+				<input
+					className={styles.input}
+					type="text"
+					id="username"
+					ref={usernameRef}
+				/>
+				<label className={styles.label} htmlFor="password">
+					Password
+				</label>
+				<input
+					className={styles.input}
+					type="text"
+					id="password"
+					ref={passwordRef}
+				/>
+				<button className={styles.button}>Play!</button>
+			</form>
+		</>
 	);
 };
 
