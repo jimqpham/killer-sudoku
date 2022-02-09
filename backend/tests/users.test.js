@@ -30,6 +30,24 @@ test("Should signup a new user", async () => {
 	expect(user.password).not.toBe("MyPass777!");
 });
 
+test("Should return user information for authenticated user", async () => {
+	const response = await request(app)
+		.get("/users")
+		.set("Authorization", `Bearer ${userOne.tokens[0].token}`)
+		.send()
+		.expect(200);
+
+	expect(response.body.role).not.toBeNull;
+	expect(response.body.currentInput).not.toBeNull;
+});
+
+test("Should not return user information for unauthenticated user", async () => {
+	const response = await request(app).get("/users").send().expect(401);
+
+	expect(response.body.role).toBeNull;
+	expect(response.body.currentInput).toBeNull;
+});
+
 test("Should login existing user", async () => {
 	const response = await request(app)
 		.post("/users/login")

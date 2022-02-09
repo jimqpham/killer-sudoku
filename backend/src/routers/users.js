@@ -30,6 +30,17 @@ router.post("/users/login", async (req, res) => {
 	}
 });
 
+// Get user information
+router.get("/users", auth, async (req, res) => {
+	try {
+		console.log("Getting user information...");
+		const { role, currentInput } = req.user;
+		res.send({ role, currentInput });
+	} catch (e) {
+		res.status(404).send(e);
+	}
+});
+
 // Logout current user
 router.post("/users/logout", auth, async (req, res) => {
 	try {
