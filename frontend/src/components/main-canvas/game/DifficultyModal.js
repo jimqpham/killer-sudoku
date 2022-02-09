@@ -9,8 +9,7 @@ const DifficultyModal = (props) => {
 	const dispatch = useDispatch();
 
 	const handleChoosingDifficulty = (difficulty) => {
-		dispatch(gameplayActions.fillCells({ difficulty }));
-		props.hideDifficultyModal();
+		props.startNewGame(difficulty);
 	};
 
 	const modalContent = (

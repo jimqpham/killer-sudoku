@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
-import axios from "../network/axios";
+import { useState } from "react";
 
 import styles from "./GameInterfacePage.module.css";
 
@@ -11,50 +10,72 @@ import MainGrid from "../components/main-canvas/game/MainGrid";
 import DraftModeToggle from "../components/main-canvas/game/DraftModeToggle";
 import RestartButton from "../components/main-canvas/game/RestartButton";
 import Header from "../components/ui/Header";
+import LoadingModal from "../components/ui/LoadingModal";
 import { gameplayActions } from "../context/gameplay-slice";
+import axios from "../network/axios";
+import Modal from "../components/ui/Modal";
 
 const GameInterfacePage = () => {
 	const hearts = useSelector((state) => state.gameplay.hearts);
-	const [showDifficultyModal, setShowDifficultyModal] = useState(true);
-	const [restartCount, setRestartCount] = useState(0);
+	const [difficulty, setDifficulty] = useState(null);
+	const [isLoading, setIsLoading] = useState(false);
+	const [showingError, setShowingError] = useState(false);
 	const dispatch = useDispatch();
 
-	const restart = () => {
-		setRestartCount((state) => state + 1);
-	};
+	const startNewGame = async (difficulty) => {
+		setDifficulty(difficulty);
+		setIsLoading(true);
 
-	const hideDifficultyModal = () => {
-		setShowDifficultyModal(false);
-	};
-
-	useEffect(() => {
-		async function startNewGame() {
-			const response = await axios.get(
-				process.env.REACT_APP_BACKEND_URL + "/boards",
-				{},
-				{
+		try {
+			const response = await axios({
+				method: "get",
+				url: "/boards",
+				headers: {
 					Authorization: `Bearer ${localStorage.getItem("sdk-token")}`,
-				}
+				},
+			});
+
+			setIsLoading(false);
+
+			const { regions, solution } = response.data;
+
+			dispatch(
+				gameplayActions.loadNewGame({
+					regions,
+					solution,
+				})
 			);
-			console.log(response);
-			dispatch(gameplayActions.newGame());
-			setShowDifficultyModal(true);
+
+			dispatch(gameplayActions.fillCells({ difficulty }));
+		} catch (e) {
+			setIsLoading(false);
+			setShowingError(true);
 		}
-		startNewGame();
-	}, [dispatch, restartCount]);
+	};
 
 	return (
-		<div className={styles.content}>
-			<Header />
-			<Hearts />
-			<DraftModeToggle />
-			<RestartButton restart={restart} />
-			<MainGrid />
-			{hearts <= 0 && <GameOverModal />}
-			{showDifficultyModal && (
-				<DifficultyModal hideDifficultyModal={hideDifficultyModal} />
+		<>
+			{showingError && (
+				<Modal
+					title="Error Fetching Board"
+					content="Cannot fetch sudoku board. Try refresh the page!"
+				/>
 			)}
-		</div>
+			{isLoading && <LoadingModal />}
+			<div className={styles.content}>
+				<Header />
+				<Hearts />
+				<DraftModeToggle />
+				<RestartButton
+					chooseDifficulty={() => {
+						setDifficulty(null);
+					}}
+				/>
+				<MainGrid />
+				{hearts <= 0 && <GameOverModal />}
+				{difficulty === null && <DifficultyModal startNewGame={startNewGame} />}
+			</div>
+		</>
 	);
 };
 

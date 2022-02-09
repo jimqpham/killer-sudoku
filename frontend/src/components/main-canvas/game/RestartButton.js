@@ -1,9 +1,16 @@
-import SideButton from "../../ui/SideButton";
+import { useDispatch } from "react-redux";
+
 import styles from "./RestartButton.module.css";
 
+import SideButton from "../../ui/SideButton";
+import { gameplayActions } from "../../../context/gameplay-slice";
+
 const RestartButton = (props) => {
-	const handleRestart = () => {
-		props.restart();
+	const dispatch = useDispatch();
+
+	const handleRestart = async () => {
+		dispatch(gameplayActions.clear());
+		props.chooseDifficulty();
 	};
 
 	return (

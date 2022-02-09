@@ -1,15 +1,13 @@
+import LoginErrorModal from "./LoginErrorModal";
+import axios from "../../network/axios";
+
 import styles from "./LoginForm.module.css";
 
 import { useNavigate } from "react-router";
 import { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
-import axios from "../../network/axios";
-import { authActions } from "../../context/auth-slice";
-import LoginErrorModal from "./LoginErrorModal";
 
 const LoginForm = (props) => {
 	const navigate = useNavigate();
-	const dispatch = useDispatch();
 
 	const usernameRef = useRef();
 	const passwordRef = useRef();
@@ -28,7 +26,7 @@ const LoginForm = (props) => {
 
 			props.setLoading(false);
 			if (response.status === 200) {
-				dispatch(authActions.updateToken({ token: response.data.token }));
+				localStorage.setItem("sdk-token", response.data.token);
 				navigate("/game");
 			}
 		} catch (e) {
