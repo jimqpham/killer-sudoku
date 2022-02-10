@@ -11,7 +11,11 @@ const HelperButtons = (props) => {
 
 	return (
 		<div className={styles.helperWrapper}>
-			<NextPhaseButton />
+			<NextPhaseButton
+				showErrorModal={props.showErrorModal}
+				showSuccessModal={props.showSuccessModal}
+				isLoading={props.setIsLoading}
+			/>
 			{phase === 2 && (
 				<SubmitRegion
 					selectedCells={props.selectedCells}

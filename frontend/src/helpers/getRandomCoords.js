@@ -1,11 +1,16 @@
 const getRandomCoords = (numCoords) => {
-	const coords = Array(numCoords)
-		.fill(-1)
-		.map((x) => {
-			const row = Math.floor(Math.random() * 9);
-			const col = Math.floor(Math.random() * 9);
-			return [row, col];
-		});
+	const coords = [];
+
+	let pool = Array(81)
+		.fill(0)
+		.map((x, i) => [Math.floor(i / 9), i % 9]);
+
+	while (coords.length < numCoords) {
+		const randomIndex = Math.floor(Math.random() * pool.length);
+
+		coords.push(pool[randomIndex]);
+		pool.splice(randomIndex, 1);
+	}
 
 	return coords;
 };

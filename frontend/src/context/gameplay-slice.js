@@ -11,34 +11,37 @@ const gameplaySlice = createSlice({
 		solution: Array(9).fill(Array(9).fill(-1)),
 		hearts: 3,
 		inDraftMode: false,
+		score: 0,
 	},
 	reducers: {
 		updateAndCheckInput(state, action) {
 			const { row, col, input } = action.payload;
 			if (validateInputKey(input)) {
 				state.input[row][col] = input;
-				if (input !== state.solution[row][col].toString())
+				if (input !== state.solution[row][col].toString()) {
 					if (state.hearts > 0) state.hearts--;
+				} else {
+					state.score++;
+				}
 			}
 		},
 		toggleDraftMode(state) {
 			state.inDraftMode = !state.inDraftMode;
 		},
-		reset(state) {
-			state.hearts = 3;
-			state.input = Array(9).fill(Array(9).fill(" "));
-		},
 		fillCells(state, action) {
 			const numCellsFilled =
-				action.payload.difficulty === "Easy"
-					? 20
+				action.payload.difficulty === "Demo"
+					? 80
+					: action.payload.difficulty === "Easy"
+					? 30
 					: action.payload.difficulty === "Medium"
-					? 15
+					? 20
 					: 10;
 			const randomCoords = getRandomCoords(numCellsFilled);
 			randomCoords.forEach(([row, col]) => {
 				state.input[row][col] = state.solution[row][col];
 			});
+			state.score += numCellsFilled;
 		},
 		clear(state) {
 			state.input = Array(9).fill(Array(9).fill(" "));
@@ -46,6 +49,7 @@ const gameplaySlice = createSlice({
 			state.inDraftMode = false;
 			state.solution = Array(9).fill(Array(9).fill(-1));
 			state.regions = [];
+			state.score = 0;
 		},
 		loadNewGame(state, action) {
 			state.regions = action.payload.regions;
