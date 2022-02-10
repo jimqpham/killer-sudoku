@@ -6,6 +6,11 @@ Killer Sudoku is a game based off of the general idea of a traditional sudoku bo
 
 This is my first attempt at building a web app completely from scratch using React and Node.js.
 
+Application URL: http://jim-killer-sudoku-frontend.herokuapp.com/
+Backend URL: http://jim-killer-sudoku-backend.herokuapp.com/
+
+Note that the web app currently does not support mobile browsers.
+
 ## Backend
 
 The backend side is built using Node.js and resources are stored in MongoDB databases. I contemplated using a dummy backend like Google Firebase for this purpose, but changed my mind because I was curious what a backend looked like. And I'm happy that I did! It was a fun ride. Below are some of the backend features.
@@ -43,7 +48,7 @@ This is the GUI that allows whoever logs in as the admin user to create and subm
 
 This is supposed to be easy to use. First you enter all the numbers into the grid, then when you're done with that, create regions that exhaustively cover all cells in the board. Then click Submit!
 
-**Note that I added in some helper buttons to populate the BYO board and test out the functionality of the front end, but if you try to submit those populated values, it should not be successful because the database does not allow duplicate boards.**
+**Note that I added in some helper buttons to populate the BYO board and test out the functionality of the front end, but if you try to submit those populated values, it should not be successful because that board has been in the database which does not allow duplicate boards.**
 
 ### Protected Resources
 As its name suggests, it refers to how the normal player is blocked from accessing the Build Your Own page. In the same vein, unauthenticated users are barred from entering the game. When they try to do something they're not allowed to, a popup block should jump into their faces.
