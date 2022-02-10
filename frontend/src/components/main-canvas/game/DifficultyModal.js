@@ -1,19 +1,20 @@
-import { useDispatch } from "react-redux";
-
 import styles from "./DifficultyModal.module.css";
 
 import Modal from "../../ui/Modal";
-import { gameplayActions } from "../../../context/gameplay-slice";
 
 const DifficultyModal = (props) => {
-	const dispatch = useDispatch();
-
 	const handleChoosingDifficulty = (difficulty) => {
 		props.startNewGame(difficulty);
 	};
 
 	const modalContent = (
 		<ul className={styles.listWrap}>
+			<li
+				className={styles.listItem}
+				onClick={handleChoosingDifficulty.bind(null, "Demo")}
+			>
+				One Cell Left (Demo Purpose)
+			</li>
 			<li
 				className={styles.listItem}
 				onClick={handleChoosingDifficulty.bind(null, "Easy")}

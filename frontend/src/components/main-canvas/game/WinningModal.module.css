@@ -1,0 +1,8 @@
+.button {
+	font-size: 1.5vmin;
+	font-weight: 500;
+	background-color: navy;
+	color: whitesmoke;
+	width: max-content;
+	align-self: center;
+}
