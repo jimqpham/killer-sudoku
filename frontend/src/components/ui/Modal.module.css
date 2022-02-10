@@ -41,7 +41,8 @@
 	flex-direction: column;
 	border: solid 1px navy;
 	background-color: whitesmoke;
-	padding: 1vmin;
+	padding-right: 2vmin;
+	padding-left: 1vmin;
 	row-gap: 1vmin;
 	border-bottom-left-radius: 2vmin;
 	border-bottom-right-radius: 2vmin;
