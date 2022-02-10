@@ -12,7 +12,13 @@ const LoginErrorModal = (props) => {
 		</>
 	);
 
-	return <Modal title="Login Error" content={loginErrorContent} />;
+	return (
+		<Modal
+			title="Login Error"
+			content={loginErrorContent}
+			closeModal={hideErrorModal}
+		/>
+	);
 };
 
 export default LoginErrorModal;

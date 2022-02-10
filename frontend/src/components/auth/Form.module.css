@@ -7,6 +7,7 @@
 	opacity: 0.7;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	gap: 1vmin;
 	font-family: Dongle, sans-serif;
 	color: white;
@@ -25,6 +26,19 @@
 	font-family: Dongle, sans-serif;
 }
 
+.errorText {
+	font-size: 2vmin;
+	color: palevioletred;
+	font-family: Dongle, sans-serif;
+}
+
+.link {
+	font-size: 2vmin;
+	color: aliceblue;
+	font-family: Dongle, sans-serif;
+	margin: auto;
+}
+
 .input {
 	font-size: 3vmin;
 	font-family: Dongle, sans-serif;
@@ -32,12 +46,33 @@
 	padding: 2px 1rem;
 }
 
+.helperText {
+	cursor: pointer;
+	font-size: 2vmin;
+	text-decoration: underline;
+	margin: auto;
+}
+
 .button {
 	font-size: 3vmin;
 	font-family: Dongle, sans-serif;
-	width: 5rem;
+	width: 70%;
 	height: 4rem;
 	margin-top: 2vmin;
 	padding: 0.5vmin;
 	align-self: center;
+	background-color: aliceblue;
+	color: navy;
+	border-color: navy;
+	border-radius: 1vmin;
+}
+
+.button:disabled {
+	color: grey;
+	border-color: grey;
+}
+
+.button:enabled:hover {
+	background-color: rgb(196, 218, 238);
+	cursor: pointer;
 }
