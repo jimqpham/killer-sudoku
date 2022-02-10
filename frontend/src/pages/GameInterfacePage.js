@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import styles from "./GameInterfacePage.module.css";
 
@@ -11,16 +11,26 @@ import DraftModeToggle from "../components/main-canvas/game/DraftModeToggle";
 import RestartButton from "../components/main-canvas/game/RestartButton";
 import Header from "../components/ui/Header";
 import LoadingModal from "../components/ui/LoadingModal";
+import RequireAuthUser from "../components/auth/RequireAuthUser";
 import { gameplayActions } from "../context/gameplay-slice";
 import axios from "../network/axios";
 import Modal from "../components/ui/Modal";
+import WinningModal from "../components/main-canvas/game/WinningModal";
+import InstructionModal from "../components/main-canvas/game/InstructionModal";
 
 const GameInterfacePage = () => {
 	const hearts = useSelector((state) => state.gameplay.hearts);
+	const score = useSelector((state) => state.gameplay.score);
 	const [difficulty, setDifficulty] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
 	const [showingError, setShowingError] = useState(false);
+	const [showWinningModal, setShowWinningModal] = useState(false);
+	const [showInstructionModal, setShowInstructionModal] = useState(false);
 	const dispatch = useDispatch();
+
+	useEffect(() => {
+		if (score === 81) setShowWinningModal(true);
+	}, [score, setShowWinningModal]);
 
 	const startNewGame = async (difficulty) => {
 		setDifficulty(difficulty);
@@ -54,28 +64,54 @@ const GameInterfacePage = () => {
 	};
 
 	return (
-		<>
-			{showingError && (
-				<Modal
-					title="Error Fetching Board"
-					content="Cannot fetch sudoku board. Try refresh the page!"
-				/>
-			)}
-			{isLoading && <LoadingModal />}
-			<div className={styles.content}>
-				<Header />
-				<Hearts />
-				<DraftModeToggle />
-				<RestartButton
-					chooseDifficulty={() => {
-						setDifficulty(null);
-					}}
-				/>
-				<MainGrid />
+		<RequireAuthUser>
+			<>
 				{hearts <= 0 && <GameOverModal />}
 				{difficulty === null && <DifficultyModal startNewGame={startNewGame} />}
-			</div>
-		</>
+				{showWinningModal && (
+					<WinningModal
+						chooseDifficulty={() => {
+							setDifficulty(null);
+						}}
+						closeModal={() => {
+							setShowWinningModal(false);
+						}}
+					/>
+				)}
+				{showingError && (
+					<Modal
+						title="Error Fetching Board"
+						content="Cannot fetch sudoku board. Try refresh the page!"
+						closeModal={() => {
+							setShowingError(false);
+						}}
+					/>
+				)}
+				{showInstructionModal && (
+					<InstructionModal
+						closeInstruction={() => {
+							setShowInstructionModal(false);
+						}}
+					/>
+				)}
+				{isLoading && <LoadingModal />}
+				<div className={styles.content}>
+					<Header
+						showInstruction={() => {
+							setShowInstructionModal(true);
+						}}
+					/>
+					<Hearts />
+					<DraftModeToggle />
+					<RestartButton
+						chooseDifficulty={() => {
+							setDifficulty(null);
+						}}
+					/>
+					<MainGrid />
+				</div>
+			</>
+		</RequireAuthUser>
 	);
 };
 
