@@ -9,7 +9,11 @@ const {
 	boardOne,
 	setupDatabase,
 } = require("./fixtures/setup");
-const [boardTwo, boardThree] = require("./fixtures/boards-for-tests");
+const [
+	boardTwo,
+	boardThree,
+	demoBoard,
+] = require("./fixtures/boards-for-tests");
 
 beforeEach(setupDatabase);
 
@@ -44,6 +48,20 @@ test("Should not create duplicate board for normal player", async () => {
 
 	const board = await Board.findById(response.body._id);
 	expect(board).toBeNull();
+});
+
+test("Should be able submit demo duplicate board multiple times (for demo purposes)", async () => {
+	await request(app)
+		.post("/boards")
+		.set("Authorization", `Bearer ${userOne.tokens[0].token}`)
+		.send(demoBoard)
+		.expect(201);
+
+	await request(app)
+		.post("/boards")
+		.set("Authorization", `Bearer ${userOne.tokens[0].token}`)
+		.send(demoBoard)
+		.expect(201);
 });
 
 test("Should return boards for user", async () => {

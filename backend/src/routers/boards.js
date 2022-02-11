@@ -1,8 +1,10 @@
 const express = require("express");
 const router = new express.Router();
+
 const auth = require("../middleware/auth");
 const authAdmin = require("../middleware/auth-admin");
 const Board = require("../models/boards");
+const skipDemoBoard = require("../middleware/skip-demo-board");
 
 // fetch a board
 router.get("/boards", auth, async (req, res) => {
@@ -15,7 +17,7 @@ router.get("/boards", auth, async (req, res) => {
 });
 
 // add a board
-router.post("/boards", authAdmin, async (req, res) => {
+router.post("/boards", [authAdmin, skipDemoBoard], async (req, res) => {
 	try {
 		const board = new Board(req.body);
 		await board.save();
